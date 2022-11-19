@@ -1,0 +1,354 @@
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+	<!-- saved from url=(0013)about:internet -->
+	<style>
+		.dC {
+			border: 1px solid;
+			float: left;
+			width: 9%;
+			margin: 4px 4px 0px 0px;
+			text-align: center;
+		}
+
+		.vC {
+			width: 135px;
+			height: 120px;
+		}
+
+		.mtVid {
+			width: 640px;
+			height: 380px;
+		}
+
+		.mtTxt {
+			width: 36px;
+			height: 36px;
+			font-size: 20px;
+			text-align: center;
+		}
+
+		.mtBtn {
+			width: 40px;
+			height: 36px;
+			font-size: 20px;
+		}
+
+		.mtDc {
+
+			width: 49%;
+			padding-right: 1px;
+			margin-right: 1px;
+			overflow-x: hidden;
+			overflow-y: hidden;
+		}
+
+		.mtFc {
+			margin-top: 3px;
+			padding-top: 3px;
+			margin-bottom: 3px;
+			padding-bottom: 3px;
+		}
+
+		.mtDcc {
+			padding-top: 6px;
+			margin-top: 6px;
+		}
+
+		.vC:hover {
+			transform: scale(4);
+			transition-duration: 0.5s;
+			transition-delay: 0.2s;
+
+		}
+
+		#spt01:hover,
+		#spt11:hover,
+		#spt21:hover,
+		#ch01:hover,
+		#ch11:hover,
+		#ch21:hover {
+			transform: scale(4) translate(51px, 0px);
+			transition-duration: 0.5s;
+			transition-delay: 0.2;
+		}
+
+		#spt02:hover,
+		#spt12:hover,
+		#spt22:hover,
+		#ch02:hover,
+		#ch12:hover,
+		#ch22:hover {
+			transform: scale(4) translate(16px, 0px);
+			transition-duration: 0.5s;
+			transition-delay: 0.2;
+		}
+
+		#spt09:hover,
+		#spt19:hover,
+		#spt29:hover,
+		#ch09:hover,
+		#ch19:hover,
+		#ch29:hover {
+			transform: scale(4) translate(-16px, 0px);
+			transition-duration: 0.5s;
+			transition-delay: 0.2;
+		}
+
+		#spt10:hover,
+		#spt20:hover,
+		#spt30:hover,
+		#ch10:hover,
+		#ch20:hover,
+		#ch30:hover {
+			transform: scale(4) translate(-51px, 0px);
+			transition-duration: 0.5s;
+			transition-delay: 0.2;
+		}
+	</style>
+
+</head>
+
+<body style="margin-top: 0; padding-top: 0;">
+	<h1>spt01-30</h1>
+	<div id="sptD" style=" width: 1505px; height: 435px;"></div>
+
+	<h1 style=" width:125px;">ch01-30</h1>
+	<div id="chD" style="width: 1505px; height: 435px; "></div>
+
+
+
+	<script>
+		function sptCreate() {
+			str = "";
+			for (let i = 1; i <= 30; i++) {
+				i = (i < 10 ? '0' : '') + i;
+				str += '<div class="dC"><a href="https://ch' + i + '-livecdn.spotvnow.co.kr/ch' + i + '/spt' + i + '.smil/chunklist.m3u8" onclick="copySrc()">' + i + '번</a><video class ="vC" id="spt' + i + '" onmouseenter="zI(event)" onmouseleave="zO(event)"></video></div>';
+			}
+			document.getElementById('sptD').innerHTML = str;
+
+		}
+		sptCreate()
+	</script>
+	<script>
+		function chCreate() {
+			str = "";
+			for (let i = 1; i <= 30; i++) {
+				i = (i < 10 ? '0' : '') + i;
+				str += '<div class="dC"><a href="https://ch' + i + '-livecdn.spotvnow.co.kr/ch' + i + '/ch' + i + '.smil/chunklist.m3u8" target="_blank">' + i + '번</a><video class ="vC" id="ch' + i + '" onmouseenter="zI(event)" onmouseleave="zO(event)"></video></div>';
+			}
+			document.getElementById('chD').innerHTML = str;
+
+		}
+		console.log(str)
+		chCreate()
+	</script>
+	<script>
+		let sptArray = ['a', 'spt01', 'spt02', 'spt03', 'spt04', 'spt05', 'spt06', 'spt07', 'spt08', 'spt09',
+			'spt10', 'spt11', 'spt12', 'spt13', 'spt14', 'spt15', 'spt16', 'spt17', 'spt18',
+			'spt19', 'spt20', 'spt21', 'spt22', 'spt23', 'spt24', 'spt25', 'spt26', 'spt27',
+			'spt28', 'spt29', 'spt30'];
+		let sptArr = ['a', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9',
+			's1', 's11', 's12', 's13', 's14', 's15', 's16', 's17', 's18',
+			's19', 's2', 's21', 's22', 's23', 's24', 's25', 's26', 's27',
+			's28', 's29', 's30'];
+		let sptSrcArr = ['a', 'sS1', 'sS2', 'sS3', 'sS4', 'sS5', 'sS6', 'sS7', 'sS8', 'sS9',
+			'sS1', 'sS11', 'sS12', 'sS13', 'sS14', 'sS15', 'sS16', 'sS17', 'sS18',
+			'sS19', 'sS2', 'sS21', 'sS22', 'sS23', 'sS24', 'sS25', 'sS26', 'sS27',
+			'sS28', 'sS29', 'sS30'];
+		let hlsArr = ['a', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8', 'h9',
+			'h1', 'h11', 'h12', 'h13', 'h14', 'h15', 'h16', 'h17', 'h18',
+			'h19', 'h2', 'h21', 'h22', 'h23', 'h24', 'h25', 'h26', 'h27',
+			'h28', 'h29', 'h30'];
+		function sptVideo() {
+
+			for (let i = 1; i <= 30; i++) {
+				j = (i < 10 ? '0' : '') + i;
+				sptArr[i] = document.getElementById(sptArray[i]);
+				sptSrcArr[i] = 'https://ch' + j + '-livecdn.spotvnow.co.kr/ch' + j + '/spt' + j + '.smil/chunklist.m3u8';
+				hlsArr[i] = new Hls();
+				hlsArr[i].attachMedia(sptArr[i]);
+				hlsArr[i].loadSource(sptSrcArr[i]);
+			}
+		}
+		sptVideo()
+	</script>
+	<script>
+		let chArray = ['a', 'ch01', 'ch02', 'ch03', 'ch04', 'ch05', 'ch06', 'ch07', 'ch08', 'ch09',
+			'ch10', 'ch11', 'ch12', 'ch13', 'ch14', 'ch15', 'ch16', 'ch17', 'ch18',
+			'ch19', 'ch20', 'ch21', 'ch22', 'ch23', 'ch24', 'ch25', 'ch26', 'ch27',
+			'ch28', 'ch29', 'ch30'];
+		let chArr = ['a', 'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8', 'c9',
+			'c1', 'c11', 'c12', 'c13', 'c14', 'c15', 'c16', 'c17', 'c18',
+			'c19', 'c2', 'c21', 'c22', 'c23', 'c24', 'c25', 'c26', 'c27',
+			'c28', 'c29', 'c30'];
+		let chSrcArr = ['a', 'cS1', 'cS2', 'cS3', 'cS4', 'cS5', 'cS6', 'cS7', 'cS8', 'cS9',
+			'cS1', 'cS11', 'cS12', 'cS13', 'cS14', 'cS15', 'cS16', 'cS17', 'cS18',
+			'cS19', 'cS2', 'cS21', 'cS22', 'cS23', 'cS24', 'cS25', 'cS26', 'cS27',
+			'cS28', 'cS29', 'cS30'];
+		let hlssArr = ['a', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'H7', 'H8', 'H9',
+			'H1', 'H11', 'H12', 'H13', 'H14', 'H15', 'H16', 'H17', 'H18',
+			'H19', 'H2', 'H21', 'H22', 'H23', 'H24', 'H25', 'H26', 'H27',
+			'H28', 'H29', 'H30'];
+		function chVideo() {
+
+			for (let i = 1; i <= 30; i++) {
+				j = (i < 10 ? '0' : '') + i;
+				chArr[i] = document.getElementById(chArray[i]);
+				chSrcArr[i] = 'https://ch' + j + '-livecdn.spotvnow.co.kr/ch' + j + '/ch' + j + '.smil/chunklist.m3u8';
+				hlssArr[i] = new Hls();
+				hlssArr[i].attachMedia(chArr[i]);
+				hlssArr[i].loadSource(chSrcArr[i]);
+			}
+		}
+		chVideo()
+	</script>
+
+	<h1>위에 전부 안될 때</h1>
+	<div style="width: 1505px; height: 435px;">
+		<div class="mtDc" style="float: left;">
+			<form class="mtFc" onSubmit="return false;">
+				<input type="text" class="mtTxt" id="mspt1" maxlength="2" onKeyup="entSpt1()">
+				<input type="button" class="mtBtn" value="spt" onclick="btnSpt1()">
+				<div class="mtDcc">
+					<video class="mtVid" id="mtspt1" autoplay controls></video>
+				</div>
+			</form>
+		</div>
+		<div class="mtDc" style="float: right;">
+			<form class="mtFc" onSubmit="return false;">
+				<input type="text" class="mtTxt" id="mspt2" maxlength="2" onKeyup="entSpt2()">
+				<input type="button" class="mtBtn" value="spt" onclick="btnSpt2()">
+				<div class="mtDcc">
+					<video class="mtVid" id="mtspt2" autoplay controls></video>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<div>
+		<div class="mtDc" style="float: left;">
+			<form class="mtFc" onSubmit="return false;">
+				<input type="text" class="mtTxt" id="mch1" maxlength="2" onKeyup="entCh1()">
+				<input type="button" class="mtBtn" value="ch" onclick="btnCh1()">
+				<div class="mtDcc">
+					<video class="mtVid" id="mtch1" autoplay controls></video>
+				</div>
+			</form>
+		</div>
+		<div class="mtDc" style="float: right;">
+			<form class="mtFc" onSubmit="return false;">
+				<input type="text" class="mtTxt" id="mch2" maxlength="2" onKeyup="entCh2()">
+				<input type="button" class="mtBtn" value="ch" onclick="btnCh2()">
+				<div class="mtDcc">
+					<video class="mtVid" id="mtch2" autoplay controls></video>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		function entSpt1() {
+			if (window.event.keyCode == 13) {
+				btnSpt1()
+			}
+		}
+		function entSpt2() {
+			if (window.event.keyCode == 13) {
+				btnSpt2()
+			}
+		}
+		function entCh1() {
+			if (window.event.keyCode == 13) {
+				btnCh1()
+			}
+		}
+		function entCh2() {
+			if (window.event.keyCode == 13) {
+				btnCh2()
+			}
+		}
+	</script>
+	<script>
+		function btnSpt1() {
+			let mSpt1 = document.getElementById('mspt1').value;
+			let mtSpt1 = document.getElementById('mtspt1');
+			let srcmSpt1 = 'https://ch' + mSpt1 + '-livecdn.spotvnow.co.kr/ch' + mSpt1 + '/spt' + mSpt1 + '.smil/chunklist.m3u8';
+			let hlsm1 = new Hls();
+			hlsm1.loadSource(srcmSpt1);
+			hlsm1.attachMedia(mtSpt1);
+		}
+	</script>
+	<script>
+		function btnSpt2() {
+			let mSpt2 = document.getElementById('mspt2').value;
+			let mtSpt2 = document.getElementById('mtspt2');
+			let srcmSpt2 = 'https://ch' + mSpt2 + '-livecdn.spotvnow.co.kr/ch' + mSpt2 + '/spt' + mSpt2 + '.smil/chunklist.m3u8';
+			let hlsm2 = new Hls();
+			hlsm2.loadSource(srcmSpt2);
+			hlsm2.attachMedia(mtSpt2);
+		}
+	</script>
+	<script>
+		function btnCh1() {
+			let mCh1 = document.getElementById('mch1').value;
+			let mtCh1 = document.getElementById('mtch1');
+			let srcmCh1 = 'https://ch' + mCh1 + '-livecdn.spotvnow.co.kr/ch' + mCh1 + '/ch' + mCh1 + '.smil/chunklist.m3u8';
+			let hlssm1 = new Hls();
+			hlssm1.loadSource(srcmCh1);
+			hlssm1.attachMedia(mtCh1);
+		}
+	</script>
+	<script>
+		function btnCh2() {
+			let mCh2 = document.getElementById('mch2').value;
+			let mtCh2 = document.getElementById('mtch2');
+			let srcmCh2 = 'https://ch' + mCh2 + '-livecdn.spotvnow.co.kr/ch' + mCh2 + '/ch' + mCh2 + '.smil/chunklist.m3u8';
+			let hlssm2 = new Hls();
+			hlssm2.loadSource(srcmCh2);
+			hlssm2.attachMedia(mtCh2);
+		}
+	</script>
+
+	<script>
+		function zI(event) {
+			event.target.muted = true;
+			event.target.autoplay = true;
+			event.target.play();
+		}
+
+		function zO(event) {
+			event.target.pause();
+		}
+
+		function copy(text) {
+			// 임시의 textarea 생성
+			const $textarea = document.createElement("textarea");
+		  
+			// body 요소에 존재해야 복사가 진행됨
+			document.body.appendChild($textarea);
+			
+			// 복사할 특정 텍스트를 임시의 textarea에 넣어주고 모두 셀렉션 상태
+			$textarea.value = text;
+			$textarea.select();
+			
+			// 복사 후 textarea 지우기
+			document.execCommand('copy');
+			document.body.removeChild($textarea);
+
+			alert("복사가 완료되었습니다.");
+		  }
+
+		function copySrc() {
+			event.preventDefault();
+			copy(event.target);
+		}
+		
+	</script>
+
+</body>
+
+</html>
